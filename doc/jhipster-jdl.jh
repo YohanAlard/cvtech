@@ -1,0 +1,62 @@
+entity Person {
+	firstName String,
+    lastName String
+    dateOfBirth Date, 
+    adress Adress, 
+    email String,
+	phoneNumber String,
+}
+
+entity Adress{
+	streetAddress String, 
+    city String, 
+    postalCode String
+}
+
+entity Resume {
+	countryName String
+}
+
+entity Skill{
+	name String,
+    description String
+    level Level,
+}
+
+entity Study{
+	diploma String,
+    school String,
+    startYear Date,
+  	endYear Date,
+}
+
+enum Level {
+    BEGINNER, MIDDLE, EXPERT, MASTER
+}
+
+
+relationship OneToMany {
+	Person{resume} to Resume,
+    Resume{person} to Person
+}
+
+relationship ManyToOne {
+	Resume{person} to Person
+}
+
+relationship OneToOne {
+	Person{adress} to Adress, 
+    Adress{person} to Person
+}
+
+
+relationship ManyToMany {
+	Person{skills} to Skill{persons}
+    Person{studies} to Study{persons}
+}
+
+
+
+
+
+
