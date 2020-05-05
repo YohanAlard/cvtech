@@ -5,7 +5,7 @@ import lombok.*;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import java.time.Instant;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -19,8 +19,8 @@ import java.util.Set;
 public class Study extends AbstractEntity {
     private String diploma;
     private String school;
-    private Instant startYear;
-    private Instant endYear;
+    private LocalDate startYear;
+    private LocalDate endYear;
 
     @ManyToMany(mappedBy = "studies")
     private Set<Resume> resumes = new HashSet<>();
